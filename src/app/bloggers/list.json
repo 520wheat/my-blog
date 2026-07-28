@@ -231,13 +231,6 @@
 		"stars": 3
 	},
 	{
-		"name": "ElysiumStack",
-		"avatar": "https://www.elysium-stack.cn/upload/b4136969-e1a1-44b9-833f-36e54392f018.png",
-		"url": "https://www.elysium-stack.cn/",
-		"description": "UI 设计师 blogger，少见，blog 设计的很棒。一股游戏感铺面而来，25 年开始的内容。",
-		"stars": 3
-	},
-	{
 		"name": "十玖八柒",
 		"avatar": "https://ahzoo.cn/img/avatar.webp",
 		"url": "https://blog.ahzoo.cn/",
@@ -286,5 +279,12 @@
 		"url": "https://www.bakai.me/",
 		"description": "还在就读的设计师，它的 Lab 还是值得看看的",
 		"stars": 3
+	},
+	{
+		"name": "Yu Yoshimuta",
+		"avatar": "/images/blogger/ea2c4d167f669b68.webp",
+		"url": "https://yuyoshimuta.com/",
+		"description": "几何体设计的语言艺术",
+		"stars": 4
 	}
 ]
