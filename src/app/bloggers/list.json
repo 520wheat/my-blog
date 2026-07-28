@@ -279,5 +279,12 @@
 		"url": "https://haoqi.design/",
 		"description": "设计的很棒的个人网站",
 		"stars": 5
+	},
+	{
+		"name": "Bakai",
+		"avatar": "blob:https://www.yysuni.com/5fa13a18-173b-4693-8d06-1b331050f408",
+		"url": "https://www.bakai.me/",
+		"description": "还在就读的设计师，它的 Lab 还是值得看看的",
+		"stars": 3
 	}
 ]
