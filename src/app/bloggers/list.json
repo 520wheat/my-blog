@@ -73,7 +73,8 @@
 		"url": "https://enpitsulin.xyz/",
 		"avatar": "https://enpitsulin.dev/images/avatar.webp",
 		"description": "很简洁的blog网站，像 nanda。只不过很久没内容了。他现在的头像一时让我想不起他是谁了，突然发现它过去可爱头像，我想起来这家伙了。",
-		"stars": 2
+		"stars": 2,
+		"status": "disconnected"
 	},
 	{
 		"name": "Innei 静かな森",
