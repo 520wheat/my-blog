@@ -53,7 +53,7 @@
 			"id": "juejin",
 			"type": "bilibili",
 			"value": "https://www.bilibili.com/",
-			"label": "B站",
+			"label": "bilibili",
 			"order": 2
 		},
 		{
