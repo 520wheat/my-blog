@@ -1,7 +1,7 @@
 {
 	"meta": {
 		"title": "520wheat",
-		"description": "YYsuni 的个人博客，记录前端开发、探索、笔记。前端 UI 更新代码仓库。",
+		"description": "我是wheat，立志成为一个开发者。",
 		"username": "wheat"
 	},
 	"theme": {
@@ -33,7 +33,7 @@
 			"url": "/images/art/1c7b726fe720679b.jpg"
 		}
 	],
-	"currentArtImageId": "1c7b726fe720679b",
+	"currentArtImageId": "a46372ff45bc5524",
 	"backgroundImages": [
 		{
 			"id": "",
@@ -45,7 +45,7 @@
 		{
 			"id": "github",
 			"type": "github",
-			"value": "https://github.com/yysuni",
+			"value": "https://github.com/dashboard",
 			"label": "Github",
 			"order": 3
 		},
@@ -59,7 +59,7 @@
 		{
 			"id": "email",
 			"type": "email",
-			"value": "yysuni1001@gmail.com",
+			"value": "2058672418@qq.com",
 			"label": "",
 			"order": 1
 		}
