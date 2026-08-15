@@ -2,7 +2,7 @@
 	{
 		"name": "bytemind",
 		"year": 2026,
-		"image": "https://raw.githubusercontent.com/520wheat/bytemind/main/docs/assets/bytemind-terminal-preview.webp",
+		"image": "/images/project/0ed706e02ff09483.png",
 		"url": "https://1024xengineer.github.io/bytemind/",
 		"description": "ByteMind 是一款轻量级编码工具，旨在帮助用户完成软件工程的各个阶段。",
 		"tags": [
