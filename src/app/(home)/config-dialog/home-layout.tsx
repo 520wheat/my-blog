@@ -12,7 +12,6 @@ const CARD_LABELS: Record<string, string> = {
 	calendarCard: '日历',
 	musicCard: '音乐',
 	socialButtons: '联系',
-	shareCard: '分享',
 	articleCard: '文章',
 	writeButtons: '写作',
 	navCard: '导航',

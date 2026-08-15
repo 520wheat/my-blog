@@ -13,10 +13,6 @@ import ProjectsFilledSVG from '@/svgs/projects-filled.svg'
 import ProjectsOutlineSVG from '@/svgs/projects-outline.svg'
 import AboutFilledSVG from '@/svgs/about-filled.svg'
 import AboutOutlineSVG from '@/svgs/about-outline.svg'
-import ShareFilledSVG from '@/svgs/share-filled.svg'
-import ShareOutlineSVG from '@/svgs/share-outline.svg'
-import WebsiteFilledSVG from '@/svgs/website-filled.svg'
-import WebsiteOutlineSVG from '@/svgs/website-outline.svg'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 import { cn } from '@/lib/utils'
@@ -43,18 +39,6 @@ const list = [
 		label: '关于网站',
 		href: '/about'
 	},
-	{
-		icon: ShareOutlineSVG,
-		iconActive: ShareFilledSVG,
-		label: '推荐分享',
-		href: '/share'
-	},
-	{
-		icon: WebsiteOutlineSVG,
-		iconActive: WebsiteFilledSVG,
-		label: '优秀博客',
-		href: '/bloggers'
-	}
 ]
 
 const extraSize = 8

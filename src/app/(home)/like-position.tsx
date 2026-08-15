@@ -12,10 +12,9 @@ export default function LikePosition() {
 	const hiCardStyles = cardStyles.hiCard
 	const socialButtonsStyles = cardStyles.socialButtons
 	const musicCardStyles = cardStyles.musicCard
-	const shareCardStyles = cardStyles.shareCard
 
 	const x =
-		styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - socialButtonsStyles.width + shareCardStyles.width + CARD_SPACING
+		styles.offsetX !== null ? center.x + styles.offsetX : center.x + hiCardStyles.width / 2 - socialButtonsStyles.width + CARD_SPACING
 	const y =
 		styles.offsetY !== null
 			? center.y + styles.offsetY
@@ -35,7 +34,7 @@ export default function LikePosition() {
 					</>
 				)}
 
-				<LikeButton delay={cardStyles.shareCard.order * ANIMATION_DELAY * 1000} />
+				<LikeButton delay={cardStyles.likePosition.order * ANIMATION_DELAY * 1000} />
 			</motion.div>
 		</HomeDraggableLayer>
 	)
