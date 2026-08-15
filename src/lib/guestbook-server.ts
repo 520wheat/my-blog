@@ -41,13 +41,15 @@ export async function hasAdminAccess(request: Request): Promise<boolean> {
 	if (!token) return false
 
 	try {
-		const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.OWNER}/${GITHUB_CONFIG.REPO}`, {
-			headers: {
-				Authorization: `Bearer ${token}`,
-				Accept: 'application/vnd.github+json',
-				'X-GitHub-Api-Version': '2022-11-28'
-			}
-		})
+		const repository = `${GITHUB_CONFIG.OWNER}/${GITHUB_CONFIG.REPO}`
+		const response = await fetch(`https://api.github.com/repos/${repository}`, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+					Accept: 'application/vnd.github+json',
+					'X-GitHub-Api-Version': '2022-11-28',
+					'User-Agent': '2025-blog-public-guestbook'
+				}
+			})
 		return response.ok
 	} catch {
 		return false
