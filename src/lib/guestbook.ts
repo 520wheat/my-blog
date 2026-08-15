@@ -16,6 +16,13 @@ export type GuestbookNote = {
 export const MAX_NICKNAME_LENGTH = 24
 export const MAX_CONTENT_LENGTH = 500
 
+export function canTransitionGuestbookStatus(current: GuestbookStatus, next: GuestbookStatus) {
+	if (current === 'deleted') return false
+	if (next === 'approved') return current === 'pending' || current === 'approved'
+	if (next === 'deleted') return true
+	return false
+}
+
 export function validateGuestbookInput(input: unknown) {
 	if (!input || typeof input !== 'object') return { ok: false as const, message: '留言格式不正确' }
 
