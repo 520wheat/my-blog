@@ -83,6 +83,34 @@ export const GITHUB_CONFIG = {
 
 **提示**，网站前端页面删改完提示成功之后，你需要等待后台的部署完成，再刷新页面才能完成服务器内容的更新哦。
 
+## 4.1 留言墙 D1 配置
+
+首页头像卡片进入 `/live2d` 后现在是留言墙。访客提交的留言会先保存为待审核状态，站长在留言墙页面导入已有的 Github App Private key 后审核。
+
+留言墙使用 Cloudflare D1 保存数据。首次配置时，在项目目录执行：
+
+```bash
+pnpm exec wrangler login
+pnpm exec wrangler d1 create 2025-blog-guestbook
+```
+
+将命令返回的数据库 ID 写入 `wrangler.toml`：
+
+```toml
+[[d1_databases]]
+binding = "GUESTBOOK_DB"
+database_name = "2025-blog-guestbook"
+database_id = "这里填写上一步返回的 UUID"
+```
+
+然后初始化远程数据库：
+
+```bash
+pnpm exec wrangler d1 execute 2025-blog-guestbook --remote --file=migrations/0001_guestbook.sql
+```
+
+最后提交 `wrangler.toml` 的绑定配置并推送代码，Cloudflare Workers Builds 会自动重新部署。D1 免费额度足够个人博客留言使用。
+
 ## 5. 删除
 
 使用这个项目应该第一件事需要删除我的 blog，单独删除，批量删除已完成。
