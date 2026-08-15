@@ -1,4 +1,5 @@
 import type { BlogConfig } from '@/app/blog/types'
+import { normalizeBlogSlug } from './blog-slug'
 
 export type { BlogConfig } from '@/app/blog/types'
 
@@ -17,10 +18,11 @@ export async function loadBlog(slug: string): Promise<LoadedBlog> {
 	if (!slug) {
 		throw new Error('Slug is required')
 	}
+	const normalizedSlug = normalizeBlogSlug(slug)
 
 	// Load config.json
 	let config: BlogConfig = {}
-	const configRes = await fetch(`/blogs/${encodeURIComponent(slug)}/config.json`)
+	const configRes = await fetch(`/blogs/${encodeURIComponent(normalizedSlug)}/config.json`)
 	if (configRes.ok) {
 		try {
 			config = await configRes.json()
@@ -30,14 +32,14 @@ export async function loadBlog(slug: string): Promise<LoadedBlog> {
 	}
 
 	// Load index.md
-	const mdRes = await fetch(`/blogs/${encodeURIComponent(slug)}/index.md`)
+	const mdRes = await fetch(`/blogs/${encodeURIComponent(normalizedSlug)}/index.md`)
 	if (!mdRes.ok) {
 		throw new Error('Blog not found')
 	}
 	const markdown = await mdRes.text()
 
 	return {
-		slug,
+		slug: normalizedSlug,
 		config,
 		markdown,
 		cover: config.cover

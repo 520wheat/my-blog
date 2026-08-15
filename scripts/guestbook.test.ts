@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
+import { normalizeBlogSlug } from '../src/lib/blog-slug.ts'
 import { GITHUB_CONFIG } from '../src/consts.ts'
 import { canTransitionGuestbookStatus, validateGuestbookInput } from '../src/lib/guestbook.ts'
 
@@ -24,4 +25,9 @@ test('uses the fork GitHub App defaults for server-side auth', () => {
 	assert.equal(GITHUB_CONFIG.OWNER, '520wheat')
 	assert.equal(GITHUB_CONFIG.REPO, 'my-blog')
 	assert.equal(GITHUB_CONFIG.APP_ID, '4596326')
+})
+
+test('normalizes encoded blog route slugs before loading files', () => {
+	assert.equal(normalizeBlogSlug('子代理流水线'), '子代理流水线')
+	assert.equal(normalizeBlogSlug('%E5%AD%90%E4%BB%A3%E7%90%86%E6%B5%81%E6%B0%B4%E7%BA%BF'), '子代理流水线')
 })
