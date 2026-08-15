@@ -177,7 +177,7 @@
 
 /* Images */
 .prose img {
-	max-width: 40%;
+	max-width: 100%;
 	margin: 1.5em auto;
 	height: auto;
 	border-radius: 12px;
