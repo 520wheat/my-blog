@@ -1,1 +1,15 @@
-[]
+[
+	{
+		"name": "bytemind",
+		"year": 2026,
+		"image": "blob:https://2025-blog-public.2058672418.workers.dev/81775f09-b881-427b-80df-5b873f6ab113",
+		"url": "https://1024xengineer.github.io/bytemind/",
+		"description": "ByteMind 是一款轻量级编码工具，旨在帮助用户完成软件工程的各个阶段。",
+		"tags": [
+			"Go",
+			"Agent",
+			"MCP"
+		],
+		"github": "https://github.com/520wheat/bytemind"
+	}
+]
