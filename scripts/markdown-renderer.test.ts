@@ -9,8 +9,11 @@ test('renders Mermaid code blocks as diagram placeholders', async () => {
 	assert.doesNotMatch(html, /data-code=/)
 })
 
-test('keeps ordinary code blocks on the existing highlighted path', async () => {
+test('keeps ordinary code blocks as a single highlighted pre element', async () => {
 	const { html } = await renderMarkdown('```ts\nconst answer = 42\n```')
 
 	assert.match(html, /<pre data-code=/)
+	assert.equal((html.match(/<pre\b/g) ?? []).length, 1)
+	assert.equal((html.match(/<\/pre>/g) ?? []).length, 1)
+	assert.match(html, /<span[^>]*>const<\/span>/)
 })
