@@ -1,0 +1,17 @@
+{
+  "title": "读懂 dsh 插件的心智模型--cordis",
+  "tags": [
+    "Cordis",
+    "DSH",
+    "插件系统",
+    "TypeScript",
+    "事件模型",
+    "依赖注入",
+    "热重载"
+  ],
+  "date": "2026-08-18T16:42",
+  "summary": "从 Plugin、Context、Service 和 inject 出发，理解 Cordis 如何通过事件、Fiber 和 effect 管理能力注册、依赖激活、插件卸载与热重载，并建立一套阅读 dsh 插件源码的固定方法。",
+  "cover": "/blogs/dsh/dcc184fc053014bd.svg",
+  "hidden": false,
+  "category": "总结"
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-labelledby="title">
+  <title id="title">Cordis 事件分发模型</title>
+  <rect width="1200" height="500" rx="18" fill="#f8fafc"/>
+  <text x="50" y="54" font-family="Arial, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#0f172a">四种事件分发方式</text>
+  <text x="50" y="84" font-family="Arial, PingFang SC, sans-serif" font-size="16" fill="#475569">区别它们只需要问：是否等待、是否并发、是否传递结果？</text>
+  <g font-family="Arial, PingFang SC, sans-serif"><rect x="50" y="125" width="255" height="285" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><rect x="325" y="125" width="255" height="285" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><rect x="600" y="125" width="255" height="285" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><rect x="875" y="125" width="275" height="285" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/></g>
+  <g font-family="Arial, PingFang SC, sans-serif" font-size="24" font-weight="700"><text x="78" y="168" fill="#1e3a8a">emit</text><text x="353" y="168" fill="#14532d">parallel</text><text x="628" y="168" fill="#78350f">serial / bail</text><text x="903" y="168" fill="#4c1d95">waterfall</text></g>
+  <g font-family="Arial, PingFang SC, sans-serif" font-size="17" fill="#334155"><text x="78" y="210">同步通知</text><text x="78" y="242">不等待 Promise</text><text x="78" y="274">不收集返回值</text><text x="78" y="338" fill="#1e3a8a">适合日志、遥测、状态广播</text><text x="353" y="210">监听器并发执行</text><text x="353" y="242">等待全部完成</text><text x="353" y="274">失败结果聚合</text><text x="353" y="338" fill="#14532d">适合独立的持久化与遥测</text><text x="628" y="210">按注册顺序执行</text><text x="628" y="242">依次询问策略</text><text x="628" y="274">遇到决定即停止</text><text x="628" y="338" fill="#78350f">适合审批与策略决策</text><text x="903" y="210">通过 next() 进入下游</text><text x="903" y="242">结果逐层返回</text><text x="903" y="274">可提前短路</text><text x="903" y="338" fill="#4c1d95">适合中间件与结果变换</text></g>
+</svg>

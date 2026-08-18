@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title">
+  <title id="title">Cordis 运行时心智模型</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="520" rx="18" fill="#f8fafc"/>
+  <text x="60" y="62" font-family="Arial, PingFang SC, sans-serif" font-size="28" font-weight="700" fill="#0f172a">Cordis 运行时心智模型</text>
+  <text x="60" y="94" font-family="Arial, PingFang SC, sans-serif" font-size="16" fill="#475569">插件由依赖驱动，由 Context 提供能力，由 Fiber 管理生命周期</text>
+  <g font-family="Arial, PingFang SC, sans-serif" text-anchor="middle">
+    <rect x="455" y="190" width="290" height="92" rx="14" fill="#0f766e"/><text x="600" y="230" font-size="25" font-weight="700" fill="#fff">Context</text><text x="600" y="258" font-size="16" fill="#ccfbf1">能力入口 / 事件 / 生命周期</text>
+    <rect x="80" y="150" width="250" height="78" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="205" y="197" font-size="23" font-weight="700" fill="#1e3a8a">Plugin 插件</text>
+    <rect x="870" y="130" width="250" height="78" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="995" y="177" font-size="23" font-weight="700" fill="#78350f">Service 服务</text>
+    <rect x="870" y="250" width="250" height="78" rx="14" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/><text x="995" y="297" font-size="23" font-weight="700" fill="#4c1d95">Event 事件</text>
+    <rect x="80" y="350" width="250" height="78" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="205" y="397" font-size="23" font-weight="700" fill="#14532d">Fiber 生命周期</text>
+    <rect x="870" y="370" width="250" height="78" rx="14" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/><text x="995" y="417" font-size="21" font-weight="700" fill="#881337">可逆副作用 / 回收</text>
+  </g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M330 190H445"/><path d="M745 220H860"/><path d="M745 255H860"/><path d="M330 390H430Q455 390 455 330"/><path d="M745 280V405H860"/></g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 330" role="img" aria-labelledby="title">
+  <title id="title">插件依赖与 Fiber 生命周期</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="330" rx="18" fill="#f8fafc"/>
+  <text x="50" y="54" font-family="Arial, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#0f172a">inject 驱动的 Fiber 生命周期</text>
+  <g font-family="Arial, PingFang SC, sans-serif" text-anchor="middle" font-size="23" font-weight="700"><rect x="65" y="120" width="180" height="76" rx="14" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><text x="155" y="166" fill="#075985">PENDING</text><rect x="315" y="120" width="180" height="76" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="405" y="166" fill="#78350f">LOADING</text><rect x="565" y="120" width="180" height="76" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="655" y="166" fill="#14532d">ACTIVE</text><rect x="815" y="120" width="180" height="76" rx="14" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/><text x="905" y="166" fill="#7c2d12">UNLOADING</text><rect x="1010" y="120" width="130" height="76" rx="14" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/><text x="1075" y="166" font-size="21" fill="#7f1d1d">FAILED</text></g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M245 158H305"/><path d="M495 158H555"/><path d="M745 158H805"/><path d="M905 196V255H155V206"/><path d="M745 120Q850 65 1000 135" stroke="#dc2626" stroke-dasharray="7 6"/></g>
+  <g font-family="Arial, PingFang SC, sans-serif" font-size="16" fill="#475569"><text x="405" y="248" text-anchor="middle">依赖可用</text><text x="905" y="285" text-anchor="middle">依赖消失 / 热替换后回到 PENDING</text></g>
+</svg>

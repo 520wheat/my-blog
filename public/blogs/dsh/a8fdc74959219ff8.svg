@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title">
+  <title id="title">effect 与资源回收</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="360" rx="18" fill="#f8fafc"/>
+  <text x="50" y="54" font-family="Arial, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#0f172a">effect：创建与撤销必须成对</text>
+  <g font-family="Arial, PingFang SC, sans-serif" text-anchor="middle" font-weight="700"><rect x="80" y="130" width="200" height="76" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="180" y="176" font-size="23" fill="#1e3a8a">Fiber</text><rect x="390" y="130" width="200" height="76" rx="14" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="490" y="176" font-size="23" fill="#78350f">effect body</text><rect x="700" y="130" width="200" height="76" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="800" y="176" font-size="23" fill="#14532d">外部资源</text><rect x="950" y="130" width="180" height="76" rx="14" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/><text x="1040" y="176" font-size="21" fill="#881337">disposer</text></g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M280 168H380"/><path d="M590 168H690"/><path d="M900 168H940"/><path d="M1040 206V270H180V216" stroke="#e11d48" stroke-dasharray="8 6"/></g>
+  <text x="600" y="310" text-anchor="middle" font-family="Arial, PingFang SC, sans-serif" font-size="17" fill="#881337">卸载或热重载时：调用 disposer，撤销定时器、监听器和连接</text>
+</svg>

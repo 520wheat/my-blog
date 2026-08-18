@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="title">
+  <title id="title">Cordis 配置加载流程</title>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+  <rect width="1200" height="300" rx="18" fill="#f8fafc"/>
+  <text x="50" y="52" font-family="Arial, PingFang SC, sans-serif" font-size="27" font-weight="700" fill="#0f172a">配置如何变成运行时贡献</text>
+  <g font-family="Arial, PingFang SC, sans-serif" text-anchor="middle" font-size="18" font-weight="700"><rect x="40" y="125" width="160" height="70" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text x="120" y="167" fill="#1e3a8a">配置与 patch</text><rect x="250" y="125" width="160" height="70" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/><text x="330" y="167" fill="#075985">Loader 解析</text><rect x="460" y="125" width="160" height="70" rx="12" fill="#fef3c7" stroke="#d97706" stroke-width="2"/><text x="540" y="167" fill="#78350f">校验 Config</text><rect x="670" y="125" width="160" height="70" rx="12" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/><text x="750" y="167" fill="#14532d">创建 Fiber</text><rect x="880" y="125" width="120" height="70" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/><text x="940" y="167" fill="#4c1d95">等待 inject</text><rect x="1040" y="125" width="120" height="70" rx="12" fill="#ffe4e6" stroke="#e11d48" stroke-width="2"/><text x="1100" y="167" fill="#881337">apply()</text></g>
+  <g stroke="#64748b" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M200 160H240"/><path d="M410 160H450"/><path d="M620 160H660"/><path d="M830 160H870"/><path d="M1000 160H1030"/></g>
+</svg>
