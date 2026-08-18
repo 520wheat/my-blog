@@ -116,8 +116,10 @@
 	font-family: var(--font-mono);
 }
 .prose pre {
+	@apply bg-brand-secondary/8;
 	border: 1px solid rgba(0, 0, 0, 0.06);
 	padding: 1rem 1.25rem;
+	padding-right: 4rem;
 	border-radius: 12px;
 	overflow: auto;
 	margin: 1em 0 2em;
@@ -126,6 +128,8 @@
 	display: block;
 }
 .prose pre code {
+	display: block;
+	min-width: max-content;
 	background: transparent !important;
 	border: 0;
 	padding: 0;
@@ -163,10 +167,15 @@
 .prose .code-block-wrapper {
 	position: relative;
 	margin: 1em 0 2em;
+	width: 100%;
+	max-width: 100%;
+	overflow: hidden;
 }
 
 .prose .code-block-wrapper > pre {
 	margin: 0;
+	max-width: 100%;
+	overflow-x: auto;
 }
 
 .prose .code-block-copy-btn {
@@ -184,12 +193,21 @@
 	border-radius: 6px;
 	cursor: pointer;
 	opacity: 0;
-	transition: opacity 0.2s, background 0.2s;
+	touch-action: manipulation;
+	transition:
+		opacity 0.2s,
+		background 0.2s;
 	z-index: 10;
 }
 
 .prose .code-block-wrapper:hover .code-block-copy-btn {
 	opacity: 1;
+}
+
+.prose .code-block-copy-btn:focus-visible {
+	opacity: 1;
+	outline: 2px solid var(--color-brand);
+	outline-offset: 2px;
 }
 
 .prose .code-block-copy-btn:hover {
@@ -199,6 +217,12 @@
 
 .prose .code-block-copy-btn:active {
 	transform: scale(0.95);
+}
+
+@media (hover: none) {
+	.prose .code-block-copy-btn {
+		opacity: 1;
+	}
 }
 
 /* Images */
