@@ -2,7 +2,7 @@
 
 一个基于 Next.js 构建的个人博客，部署在 Cloudflare Workers。
 
-博客地址：https://2025-blog-public.2058672418.workers.dev/
+博客地址：https://520wheat.2058672418.workers.dev/
 
 博客项目源仓库为：https://github.com/YYsuni/2025-blog-public
 
