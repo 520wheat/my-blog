@@ -20,6 +20,23 @@ function escapeHtmlAttribute(value: string): string {
 	return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
+export function extractCodeBlockPlaceholders(html: string) {
+	const codeBlocks: Array<{ placeholder: string; code: string; preHtml: string }> = []
+	const processedHtml = html.replace(/<pre\s+data-code="([^"]*)"[^>]*>([\s\S]*?)<\/pre>/g, (match, codeAttr) => {
+		const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`
+		const code = codeAttr
+			.replace(/&quot;/g, '"')
+			.replace(/&#39;/g, "'")
+			.replace(/&lt;/g, '<')
+			.replace(/&gt;/g, '>')
+			.replace(/&amp;/g, '&')
+		codeBlocks.push({ placeholder, code, preHtml: match })
+		return placeholder
+	})
+
+	return { processedHtml, codeBlocks }
+}
+
 // Lazy load shiki to handle environments where it's not available (e.g., Cloudflare Workers)
 let shikiModule: typeof import('shiki') | null = null
 let shikiLoadAttempted = false

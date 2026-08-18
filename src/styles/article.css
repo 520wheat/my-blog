@@ -219,7 +219,7 @@
 	transform: scale(0.95);
 }
 
-@media (hover: none) {
+@media (hover: none), (max-width: 640px) {
 	.prose .code-block-copy-btn {
 		opacity: 1;
 	}

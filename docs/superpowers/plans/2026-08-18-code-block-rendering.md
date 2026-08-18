@@ -4,7 +4,7 @@
 
 **Goal:** 修复普通 Markdown 代码块的嵌套 `<pre>` 结构，让文章中的浅色代码面板占满可用宽度、支持长代码横向滚动，并保持复制按钮可用。
 
-**Architecture:** `renderMarkdown` 继续在服务端使用 Shiki 高亮，但把 Shiki 返回的完整 `<pre>` 拆成其 `<code>` 内容后再生成唯一的外层 `<pre data-code>`. `useMarkdownRender` 和 `CodeBlock` 的职责不变；`article.css` 负责面板布局、滚动和复制按钮的焦点/响应式状态。
+**Architecture:** `renderMarkdown` 继续在服务端使用 Shiki 高亮，但把 Shiki 返回的完整 `<pre>` 拆成其 `<code>` 内容后再生成唯一的外层 `<pre data-code>`. `extractCodeBlockPlaceholders` 保留这个完整 `<pre>` 交给客户端 `CodeBlock`，避免客户端解析时丢失块级结构；`article.css` 负责面板布局、滚动和复制按钮的焦点/响应式状态。
 
 **Tech Stack:** Next.js 16, TypeScript, marked 17, Shiki 3, React 19, lucide-react, Node built-in test runner.
 
@@ -59,6 +59,7 @@ git commit -m "test: cover single pre code block structure"
 
 **Files:**
 - Modify: `src/lib/markdown-renderer.ts:84-99`
+- Modify: `src/hooks/use-markdown-render.tsx:27-48`
 - Test: `scripts/markdown-renderer.test.ts`
 
 **Interfaces:**
@@ -75,16 +76,20 @@ return `<pre data-code="${escapedCode}"><code${codeMatch[1]}>${codeMatch[2]}</co
 
 If the match is unavailable, keep the existing highlighted HTML as the inner content so rendering still succeeds.
 
-- [ ] **Step 2: Run the focused regression test**
+- [ ] **Step 2: Preserve the complete pre element for the client replacement path**
+
+Move the existing `html.replace(/<pre.../)` placeholder extraction from `useMarkdownRender` into an exported `extractCodeBlockPlaceholders(html: string)` helper in `src/lib/markdown-renderer.ts`. The helper must store `preHtml: match`, not `preHtml: content`, while keeping the existing entity decoding and placeholder format. Update `useMarkdownRender` to consume `{ processedHtml, codeBlocks }` from this helper. This keeps `CodeBlock` rendering as `.code-block-wrapper > pre > code`.
+
+- [ ] **Step 3: Run the focused regression test**
 
 Run: `node --experimental-strip-types --test scripts/markdown-renderer.test.ts`
 
 Expected: all Mermaid and ordinary code block tests pass with zero failures.
 
-- [ ] **Step 3: Commit the renderer fix**
+- [ ] **Step 4: Commit the renderer fix**
 
 ```bash
-git add src/lib/markdown-renderer.ts scripts/markdown-renderer.test.ts
+git add src/lib/markdown-renderer.ts src/hooks/use-markdown-render.tsx scripts/markdown-renderer.test.ts
 git commit -m "fix: flatten highlighted code block markup"
 ```
 
