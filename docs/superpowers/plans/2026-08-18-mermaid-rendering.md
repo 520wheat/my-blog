@@ -4,27 +4,25 @@
 
 **Goal:** Render Markdown fenced blocks tagged `mermaid` as diagrams in both published article pages and the writing preview.
 
-**Architecture:** Keep Mermaid out of the server Markdown renderer. `renderMarkdown` will emit a safe placeholder for Mermaid code blocks, while the existing `useMarkdownRender` parser will replace that placeholder with a client-only `MermaidDiagram` component. The component lazy-loads Mermaid, renders SVG in the browser, and falls back to readable source code when rendering fails.
+**Architecture:** Keep Mermaid out of the server Markdown renderer and Worker bundle. `renderMarkdown` will emit a safe placeholder for Mermaid code blocks, while the existing `useMarkdownRender` parser will replace that placeholder with a client-only `MermaidDiagram` component. The component lazy-loads a pinned Mermaid UMD file from jsDelivr, renders SVG in the browser, and falls back to readable source code when rendering fails.
 
-**Tech Stack:** `marked` 17, `html-react-parser`, React 19, Mermaid, Node's built-in `node:test`, OpenNext for Cloudflare.
+**Tech Stack:** `marked` 17, `html-react-parser`, React 19, pinned Mermaid CDN UMD, Node's built-in `node:test`, OpenNext for Cloudflare.
 
 ## Global Constraints
 
 - Support code block language marker `mermaid` case-insensitively.
 - Apply the same behavior to the article detail page and writing preview because both use `useMarkdownRender`.
 - Preserve ordinary Shiki-highlighted code blocks and their copy behavior.
-- Keep Mermaid client-only so the Cloudflare Worker does not execute Mermaid during server rendering.
+- Keep Mermaid client-only and outside the Worker bundle so the free Cloudflare Worker 3 MiB script limit is respected.
 - Mermaid syntax errors and dependency loading failures must not prevent the rest of the article from rendering.
 - Do not add a Mermaid editor, export action, zoom controls, or server-side SVG persistence.
 
 ---
 
-### Task 1: Add the Mermaid dependency and renderer regression tests
+### Task 1: Add renderer regression tests
 
 **Files:**
 - Create: `scripts/markdown-renderer.test.ts`
-- Modify: `package.json`
-- Modify: `pnpm-lock.yaml`
 
 **Interfaces:**
 - Consumes: `renderMarkdown(markdown: string)` from `src/lib/markdown-renderer.ts`.
@@ -63,20 +61,10 @@ node --experimental-strip-types --test scripts/markdown-renderer.test.ts
 
 Expected: the Mermaid test fails because the current renderer treats `Mermaid` as an ordinary code block; the ordinary code test passes.
 
-- [ ] **Step 3: Add Mermaid without changing application code**
-
-Run:
+- [ ] **Step 3: Commit the regression test**
 
 ```bash
-pnpm add mermaid
-```
-
-Expected: `package.json` and `pnpm-lock.yaml` contain the Mermaid runtime dependency.
-
-- [ ] **Step 4: Commit the dependency and regression test**
-
-```bash
-git add scripts/markdown-renderer.test.ts package.json pnpm-lock.yaml
+git add scripts/markdown-renderer.test.ts
 git commit -m "test: cover mermaid markdown blocks"
 ```
 
@@ -135,7 +123,7 @@ type MermaidDiagramProps = { chart: string }
 export function MermaidDiagram({ chart }: MermaidDiagramProps) { /* ... */ }
 ```
 
-Use `useId()` to create a stable DOM-safe Mermaid render ID. Lazy-load Mermaid inside `useEffect`, initialize it with `startOnLoad: false` and `securityLevel: 'strict'`, and call `mermaid.render(id, chart)`. Store the returned SVG in state and inject only the generated SVG into a diagram container. If loading or rendering throws, render a short Chinese error label plus the original chart in a `pre`/`code` fallback. Ignore late async results after unmount.
+Use `useId()` to create a stable DOM-safe Mermaid render ID. Inside `useEffect`, load the pinned UMD file `https://cdn.jsdelivr.net/npm/mermaid@11.16.1/dist/mermaid.min.js` by adding a script element, initialize the global Mermaid API with `startOnLoad: false` and `securityLevel: 'strict'`, and call `mermaid.render(id, chart)`. Store the returned SVG in state and inject only the generated SVG into a diagram container. If loading or rendering throws, render a short Chinese error label plus the original chart in a `pre`/`code` fallback. Ignore late async results after unmount.
 
 - [ ] **Step 2: Commit the isolated client renderer**
 

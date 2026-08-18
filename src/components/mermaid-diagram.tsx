@@ -2,7 +2,18 @@
 
 import { useEffect, useId, useState } from 'react'
 
-type MermaidApi = typeof import('mermaid').default
+const MERMAID_CDN_URL = 'https://cdn.jsdelivr.net/npm/mermaid@11.16.1/dist/mermaid.min.js'
+
+type MermaidApi = {
+	initialize(config: { startOnLoad: boolean; securityLevel: 'strict'; theme: 'base' }): void
+	render(id: string, chart: string): Promise<{ svg: string }>
+}
+
+declare global {
+	interface Window {
+		mermaid?: MermaidApi
+	}
+}
 
 type MermaidDiagramProps = {
 	chart: string
@@ -11,9 +22,26 @@ type MermaidDiagramProps = {
 let mermaidPromise: Promise<MermaidApi> | null = null
 
 function loadMermaid(): Promise<MermaidApi> {
-	if (!mermaidPromise) {
-		mermaidPromise = import('mermaid').then(module => module.default)
-	}
+	if (typeof window === 'undefined') return Promise.reject(new Error('Mermaid 只能在浏览器中加载'))
+	if (window.mermaid) return Promise.resolve(window.mermaid)
+	if (mermaidPromise) return mermaidPromise
+
+	mermaidPromise = new Promise((resolve, reject) => {
+		const script = document.createElement('script')
+		script.src = MERMAID_CDN_URL
+		script.async = true
+		script.crossOrigin = 'anonymous'
+		script.onload = () => {
+			if (window.mermaid) {
+				resolve(window.mermaid)
+			} else {
+				reject(new Error('Mermaid CDN 加载完成但未找到运行时'))
+			}
+		}
+		script.onerror = () => reject(new Error('Mermaid CDN 加载失败'))
+		document.head.appendChild(script)
+	})
+
 	return mermaidPromise
 }
 

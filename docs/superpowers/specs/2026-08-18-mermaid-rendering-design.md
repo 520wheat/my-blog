@@ -15,7 +15,9 @@
 
 在现有 `src/lib/markdown-renderer.ts` 中识别 Mermaid 代码块，并输出带有原始图表文本的数据属性的占位元素。`src/hooks/use-markdown-render.tsx` 在解析 HTML 时将该占位元素替换为一个客户端 Mermaid 组件。
 
-Mermaid 组件按需加载 Mermaid 库，在浏览器中初始化并渲染 SVG。这样 Mermaid 不参与 Cloudflare Worker 的服务端执行，也不会改变现有 Shiki 和 KaTeX 的服务端兼容处理。
+Mermaid 组件在浏览器中按需加载固定版本的 Mermaid CDN UMD 文件，初始化并渲染 SVG。这样 Mermaid 不会进入 Cloudflare Worker 的 Worker bundle，也不会改变现有 Shiki 和 KaTeX 的服务端兼容处理。
+
+由于 Cloudflare 免费 Workers 的 Worker 脚本大小限制，不能将 Mermaid npm bundle 打进 Worker；图表渲染失败或 CDN 不可用时会回退到原始代码。
 
 ## 数据流
 
