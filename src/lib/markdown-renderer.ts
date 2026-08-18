@@ -87,7 +87,8 @@ export async function renderMarkdown(markdown: string): Promise<MarkdownRenderRe
 			const escapedCode = codeData.original.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 			if (codeData.html) {
 				// Shiki highlighted code
-				return `<pre data-code="${escapedCode}">${codeData.html}</pre>`
+				const highlightedContent = codeData.html.replace(/^<pre\b[^>]*>/, '').replace(/<\/pre>\s*$/, '')
+				return `<pre data-code="${escapedCode}">${highlightedContent}</pre>`
 			}
 			// Fallback for failed highlighting
 			return `<pre data-code="${escapedCode}"><code>${codeData.original}</code></pre>`
