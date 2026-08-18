@@ -3,6 +3,7 @@ import parse, { type HTMLReactParserOptions, Element, type DOMNode } from 'html-
 import { renderMarkdown, type TocItem } from '@/lib/markdown-renderer'
 import { MarkdownImage } from '@/components/markdown-image'
 import { CodeBlock } from '@/components/code-block'
+import { MermaidDiagram } from '@/components/mermaid-diagram'
 
 type MarkdownRenderResult = {
 	content: ReactElement | null
@@ -45,6 +46,10 @@ export function useMarkdownRender(markdown: string): MarkdownRenderResult {
 					// Parse HTML and replace img elements and code block placeholders
 					const options: HTMLReactParserOptions = {
 						replace(domNode: DOMNode) {
+							if (domNode instanceof Element && domNode.name === 'div' && domNode.attribs['data-mermaid-chart'] !== undefined) {
+								return <MermaidDiagram chart={domNode.attribs['data-mermaid-chart']} />
+							}
+
 							if (domNode instanceof Element && domNode.name === 'img') {
 								const { src, alt, title } = domNode.attribs
 								return <MarkdownImage src={src} alt={alt} title={title} />

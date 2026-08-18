@@ -133,6 +133,32 @@
 	tab-size: 2;
 }
 
+/* Mermaid diagrams */
+.prose .mermaid-diagram {
+	width: 100%;
+	overflow-x: auto;
+	margin: 1.5em 0;
+	text-align: center;
+}
+.prose .mermaid-diagram svg {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+.prose .mermaid-error {
+	margin: 1.5em 0;
+	color: var(--color-secondary);
+}
+.prose .mermaid-error p {
+	margin: 0 0 0.5em;
+	color: #dc2626;
+	font-size: 0.9em;
+}
+.prose .mermaid-fallback {
+	margin: 0;
+	text-align: left;
+}
+
 /* Code Block with Copy Button */
 .prose .code-block-wrapper {
 	position: relative;
