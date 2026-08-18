@@ -16,6 +16,10 @@ export function slugify(text: string): string {
 		.replace(/\s+/g, '-')
 }
 
+function escapeHtmlAttribute(value: string): string {
+	return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
 // Lazy load shiki to handle environments where it's not available (e.g., Cloudflare Workers)
 let shikiModule: typeof import('shiki') | null = null
 let shikiLoadAttempted = false
@@ -71,6 +75,10 @@ export async function renderMarkdown(markdown: string): Promise<MarkdownRenderRe
 	}
 
 	renderer.code = (token: Tokens.Code) => {
+		if (token.lang?.trim().toLowerCase() === 'mermaid') {
+			return `<div data-mermaid-chart="${escapeHtmlAttribute(token.text)}"></div>`
+		}
+
 		// Check if this code block was pre-processed
 		const codeData = codeBlockMap.get(token.text)
 		if (codeData) {
@@ -204,6 +212,8 @@ export async function renderMarkdown(markdown: string): Promise<MarkdownRenderRe
 	for (const token of tokens) {
 		if (token.type === 'code') {
 			const codeToken = token as Tokens.Code
+			if (codeToken.lang?.trim().toLowerCase() === 'mermaid') continue
+
 			const originalCode = codeToken.text
 			const key = `__SHIKI_CODE_${codeBlockMap.size}__`
 
