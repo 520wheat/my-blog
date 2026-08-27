@@ -1,97 +1,87 @@
 ## 特征
-1. 快速判断一个元素是否存在(两数关系)
-2. 是否需要统计出现次数
-3. 是否需要记录下标
-4. 是否需要映射（将同样特征的元素放到一起）
+两个下标同时移动，利用题目中的单调性或者结构，节省掉不必要的搜索
 
-只需要判断**存在性**可以使用`set`
+一般来说：
+### 同向双指针
+- 原地删除元素
+- 移动元素
+- 去重
+- 划分数组
+- 一个指针遍历，一个指针维护结果
+
 ```cpp
-unordered_set<int> st;
-```
+int slow = 0;
 
-其余情况可以使用`map`
-```cpp
-unordered_map<int,int> mp;
-```
-
-## 解题流程
-### 1.确认保存的东西
-只判断存在性       -> unordered_set  
-统计出现次数       -> unordered_map<T, int>  
-记录下标           -> unordered_map<T, int>  
-记录分组           -> unordered_map<Key, vector< T >>  
-记录第一次出现     -> 只在不存在时插入  
-记录最后一次出现   -> 每次直接覆盖
-
-### 2.确定key
-这里要确定一个用来快速查找的标识，下面提供一些例子：
-```text
-两数之和：
-key = 数值
-value = 下标
-
-字母异位词：
-key = 排序后的字符串或字符计数
-value = 同组字符串
-
-最长连续序列：
-key = 数值
-value = 是否存在
-```
-### 3.确认循环不变量
-循环每次开始时都成立、执行一轮后仍然成立的条件。  
-用于明确当前数据结构代表什么，帮助验证循环逻辑正确，避免重复计算、漏算或错误使用当前数据。
-
-### 4.检查边界
-- 空数组
-- 数组中有重复元素
-- 负数和 0
-- 当前元素是否会和自己匹配
-- 第一次出现和最后一次出现
-- key 是否真的能唯一表示特征
-
-## 参考模版
-### 1.计数
-```cpp
-unordered_map<int,int> freq;
-
-for(int x : nums){
-    ++freq[x];
-}
-```
-
-### 2.查找补数
-```cpp
-unordered_map<int,int> pos;
-
-for(int i = 0; i < nums.size(); i++){
-    int need = target - nums[i];
-
-    if(pos.find(need) != pos.end()){
-        // 找到了
+for(int fast = 0; fast < nums.size(); fast++){
+    if(条件满足){
+        nums[slow] = nums[fast];
+        slow++;
     }
-
-    pos[nums[i]] = i;//没找到的时候将此时这个nums[i]存入哈希表
 }
 ```
 
-### 3.判断存在性
-```cpp
-unordered_set<int> st(nums.begin(), nums.end());
+### 相向双指针
+- 有序数组查找
+- 两数之和
+- 区间收缩
+- 根据某种规律排除一部分答案
 
-if(st.count(x)){
-    //x存在
+```cpp
+int l = 0;
+int r = nums.size() - 1;
+
+while(l < r){
+    //根据规则移动 l 或 r
 }
 ```
 
-### 4.按特征分组
+## 移动谁
+需要明确一个问题：如果我移动了这个指针，排除掉的情况，一定不会是最优解吗
+双指针题目的核心往往不在“两个指针”，而是有依据证明某一侧是可以被排除的
+
+### 接雨水
+这里以接雨水为例：
+https://leetcode.cn/problems/trapping-rain-water/description/
+
+某个位置能接多少雨水，取决于这个位置往两个方向，取各自最高的墙  
+min(左侧最高柱子, 右侧最高柱子) - 当前高度
+
+如果每个位置都向左右寻找最高柱子，会重复计算。所以我们使用双指针维护：  
+leftMax：左侧已经遇到的最高柱子  
+rightMax：右侧已经遇到的最高柱子  
+
+每次处理矮的那一边
 ```cpp
-unordered_map<string, vector<string>> groups;
-
-for(string& s : strs){
-    string key = s;
-    sort(key.begin(), key.end());
-
-    groups[key].push_back(s);
+if (height[left] <= height[right]) {
+    处理 left;
+} else {
+    处理 right;
 }
+```
+
+```cpp
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int l = 0;
+        int r = height.size() - 1;
+        int ans = 0;
+
+        int lmx = 0;
+        int rmx = 0;
+        while(l < r){
+            if(height[l] <= height[r]){
+                lmx = max(lmx,height[l]);
+                ans += lmx - height[l];
+                l++;
+            }else{
+                rmx = max(rmx,height[r]);
+                ans += rmx - height[r];
+                r--;
+            }
+        }
+
+        return ans;
+    }
+};
 ```

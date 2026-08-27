@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#ffffff"/>
+
+  <text x="600" y="180" text-anchor="middle" fill="#111111" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="92" font-weight="700" letter-spacing="0">双指针</text>
+
+  <g fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- inward scanning paths -->
+    <path d="M166 369 C260 294 379 278 493 304 C531 313 560 330 589 353"/>
+    <path d="M589 353 L566 348 L581 370"/>
+    <path d="M1034 369 C941 294 822 278 707 304 C670 313 640 330 612 353"/>
+    <path d="M612 353 L635 348 L620 370"/>
+
+    <!-- left pointer -->
+    <circle cx="145" cy="487" r="49"/>
+    <circle cx="145" cy="487" r="13"/>
+    <path d="M201 487 C229 485 246 486 271 486"/>
+    <path d="M247 468 L273 486 L247 504"/>
+
+    <!-- right pointer -->
+    <circle cx="1055" cy="487" r="49"/>
+    <circle cx="1055" cy="487" r="13"/>
+    <path d="M999 487 C973 485 954 486 929 486"/>
+    <path d="M953 468 L927 486 L953 504"/>
+
+    <!-- array -->
+    <path d="M296 407 C400 403 506 407 600 405 C698 403 802 406 904 407 C918 408 925 416 925 430 L924 543 C924 558 916 565 902 565 C803 566 700 563 600 565 C499 565 398 563 297 565 C282 565 275 557 275 543 L276 430 C276 416 283 408 296 407 Z"/>
+    <path d="M357 407 C355 448 359 503 357 565"/>
+    <path d="M438 407 C441 451 437 508 440 565"/>
+    <path d="M519 407 C517 454 521 512 519 565"/>
+    <path d="M600 406 C603 452 598 512 601 565"/>
+    <path d="M681 405 C679 452 683 509 681 565"/>
+    <path d="M762 406 C764 451 760 510 763 565"/>
+    <path d="M843 407 C840 453 845 510 843 565"/>
+
+    <!-- array elements -->
+    <circle cx="317" cy="462" r="14"/>
+    <circle cx="398" cy="506" r="14"/>
+    <circle cx="479" cy="464" r="14"/>
+    <circle cx="560" cy="510" r="14"/>
+    <circle cx="641" cy="464" r="14"/>
+    <circle cx="722" cy="509" r="14"/>
+    <circle cx="803" cy="463" r="14"/>
+    <circle cx="884" cy="506" r="14"/>
+
+    <!-- subtle baseline strokes -->
+    <path d="M114 690 C211 686 303 692 388 689"/>
+    <path d="M438 689 C523 686 601 692 678 689"/>
+    <path d="M728 690 C823 686 913 692 1000 689"/>
+    <path d="M1029 690 C1054 687 1080 691 1103 689"/>
+  </g>
+</svg>
