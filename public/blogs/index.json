@@ -1,5 +1,18 @@
 [
   {
+    "slug": "算法",
+    "title": "哈希",
+    "tags": [
+      "哈希表",
+      "模板"
+    ],
+    "date": "2026-08-27T15:12",
+    "summary": "算法面哈希表部分的简单学习",
+    "cover": "/blogs/算法/95f594627121c428.svg",
+    "hidden": false,
+    "category": "总结"
+  },
+  {
     "slug": "dsh",
     "title": "读懂 dsh 插件的心智模型--cordis",
     "tags": [
