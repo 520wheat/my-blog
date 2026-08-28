@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#ffffff"/>
+
+  <text x="600" y="180" text-anchor="middle" fill="#111111" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="92" font-weight="700" letter-spacing="0">滑动窗口</text>
+
+  <g fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- array strip -->
+    <path d="M180 408 C279 404 382 407 481 405 C583 404 687 407 788 405 C880 404 966 407 1020 408 C1035 409 1042 417 1041 432 L1040 552 C1040 566 1032 574 1017 574 C921 576 818 572 720 574 C617 576 515 572 414 574 C317 576 243 572 181 574 C166 574 158 566 159 551 L160 431 C160 417 167 409 180 408 Z"/>
+    <path d="M257 407 C255 451 259 515 257 574"/>
+    <path d="M337 406 C340 451 336 516 339 574"/>
+    <path d="M418 406 C416 452 420 517 418 574"/>
+    <path d="M499 405 C502 450 497 516 500 574"/>
+    <path d="M580 405 C578 451 582 518 580 574"/>
+    <path d="M661 406 C664 451 659 517 662 574"/>
+    <path d="M742 405 C740 451 744 516 742 574"/>
+    <path d="M823 405 C826 450 821 517 824 574"/>
+    <path d="M904 406 C902 451 906 517 904 574"/>
+    <path d="M985 407 C988 452 983 516 986 574"/>
+
+    <!-- array elements -->
+    <circle cx="208" cy="466" r="14"/>
+    <circle cx="298" cy="520" r="14"/>
+    <circle cx="379" cy="466" r="14"/>
+    <circle cx="460" cy="518" r="14"/>
+    <circle cx="541" cy="466" r="14"/>
+    <circle cx="622" cy="519" r="14"/>
+    <circle cx="703" cy="466" r="14"/>
+    <circle cx="784" cy="519" r="14"/>
+    <circle cx="865" cy="466" r="14"/>
+    <circle cx="946" cy="518" r="14"/>
+
+    <!-- active sliding window -->
+    <path d="M349 369 C438 365 520 368 600 367 C680 365 756 368 823 370 C835 370 841 378 841 390 L840 591 C840 603 833 610 821 610 C747 612 672 608 600 610 C523 612 442 608 349 610 C337 610 331 603 331 591 L332 389 C332 377 338 370 349 369 Z" stroke-width="9"/>
+    <path d="M349 369 C437 374 520 367 600 370 C681 373 756 367 823 370" stroke-width="4"/>
+    <path d="M349 610 C438 605 520 612 600 608 C680 604 756 613 821 610" stroke-width="4"/>
+
+    <!-- window movement arrows -->
+    <path d="M350 677 C433 675 520 679 602 677 C684 675 764 678 849 677"/>
+    <path d="M374 659 L348 677 L374 695"/>
+    <path d="M825 659 L851 677 L825 695"/>
+
+    <!-- light baseline strokes -->
+    <path d="M104 752 C190 748 274 754 353 751"/>
+    <path d="M433 751 C523 748 605 754 687 751"/>
+    <path d="M767 752 C854 748 943 754 1021 751"/>
+  </g>
+</svg>
