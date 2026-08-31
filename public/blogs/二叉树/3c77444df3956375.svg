@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#ffffff"/>
+  <text x="600" y="180" text-anchor="middle" fill="#111111" font-family="PingFang SC, Hiragino Sans GB, Microsoft YaHei, sans-serif" font-size="92" font-weight="700">二叉树</text>
+  <g fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M600 353 C555 389 508 414 452 447 M600 353 C648 389 695 414 750 447 M452 539 C414 568 378 589 340 615 M452 539 C468 568 494 590 520 615 M750 539 C732 568 706 590 680 615 M750 539 C789 568 826 590 864 615"/>
+    <circle cx="600" cy="326" r="42"/><circle cx="452" cy="488" r="42"/><circle cx="750" cy="488" r="42"/><circle cx="340" cy="657" r="42"/><circle cx="520" cy="657" r="42"/><circle cx="680" cy="657" r="42"/><circle cx="864" cy="657" r="42"/>
+    <path d="M581 326 C592 318 602 337 613 326 M433 488 C444 480 454 499 465 488 M731 488 C742 480 752 499 763 488 M321 657 C332 649 342 668 353 657 M501 657 C512 649 522 668 533 657 M661 657 C672 649 682 668 693 657 M845 657 C856 649 866 668 877 657"/>
+    <path d="M126 753 C214 749 302 755 380 752 M820 753 C908 749 992 755 1075 752"/>
+  </g>
+</svg>
